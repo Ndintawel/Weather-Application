@@ -43,7 +43,6 @@ main {
     height: 120px; 
   }
   
-  
   .form button {
     width: 100%;
     padding: 15px; 
@@ -55,7 +54,7 @@ main {
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-  
+
   .form button:hover {
     background-color: #aa6f73;
   }
@@ -63,13 +62,13 @@ main {
   .form p {
     text-align: center;
   }
-  
+
   .form a {
     color: #007bff;
     text-decoration: none;
     transition: color 0.3s ease;
   }
-  
+
   .form a:hover {
     color: #0056b3;
   }
