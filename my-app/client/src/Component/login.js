@@ -20,22 +20,10 @@ export const Login = ({ userInfo }) => {
 
   const navigate = useNavigate();
 
-  const [setUserInfo] = useState([]);
+  const [userInfoItem, setUserInfor] = useState([]);
   const userCollectionRef = collection(db, "User Info");
 
-  const getUserInfo = async () => {
-    try {
-      const data = await getDocs(userCollectionRef);
-      const filteredData = data.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id
-      }));
-      setUserInfo(filteredData);
-    } catch (err) {
-      console.error(err);
-    }
-  }; 
-
+ 
   const deleteUserInfo= async(id)=>{
     const userDoc=doc(db, "User Info", id);
     await deleteDoc(userDoc);
@@ -46,9 +34,37 @@ export const Login = ({ userInfo }) => {
     await updateDoc(userDoc, {Content: updatedContent});
   };
 
+  const onSubmit=async()=>{
+    try{
+      await addDoc(userCollectionRef, {
+        FullName: newFullName, 
+        Title: newTitle, 
+        Content: newContent, 
+        Location: newLocation
+      });
+      
+    }catch(err){
+      console.error(err);
+    }
+  };
+
+
   useEffect(() => {
+    const getUserInfo = async () => {
+      try {
+        const data = await getDocs(userCollectionRef);
+        const filteredData = data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id
+        }));
+        setUserInfor(filteredData);
+      } catch (err) {
+        console.error(err);
+      }
+    }; 
+  
     getUserInfo();
-  }, []);
+  }, [onSubmit]);
 
 
   const onLogin = (e) => {
@@ -74,20 +90,7 @@ export const Login = ({ userInfo }) => {
       console.error(err);
     }
   };
-  const onSubmit=async()=>{
-    try{
-      await addDoc(userCollectionRef, {
-        FullName: newFullName, 
-        Title: newTitle, 
-        Content: newContent, 
-        Location: newLocation
-      });
-      getUserInfo();
-    }catch(err){
-      console.error(err);
-    }
-  };
-
+ 
   return (
     <>
       <main >
@@ -103,7 +106,7 @@ export const Login = ({ userInfo }) => {
                 <button onClick={onSubmit}>Submit Info</button>
             </div>
             <div>
-              {userInfo.map((userInfoItem) => (
+              {userInfoItem.map((userInfoItem) => (
                 <div key={userInfoItem.id}>
                   <p>Full Name: {userInfoItem.FullName}</p>
                   <p>Title: {userInfoItem.Title}</p>
