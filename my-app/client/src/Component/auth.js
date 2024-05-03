@@ -34,7 +34,7 @@ export const Auth=()=>{
 
     return(
         <div>
-        <h1>Weather Daily By Sophie</h1> 
+        <h1>Weather Daily</h1> 
             <input placeholder="Email..." onChange={(e)=>setEmail(e.target.value)}/>
             <input placeholder="Password..." type="password" onChange={(e)=>setPassword(e.target.value)}/>
             <button onClick={()=>{SignUp()}}>Sign Up</button>

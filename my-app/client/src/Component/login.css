@@ -5,6 +5,14 @@ main {
     align-items: center;
     height: 100vh;
   }
+
+  p{
+    font-size: larger;
+  }
+
+  h1{
+    font-family: sans-serif;
+  }
   
   
   .form {
