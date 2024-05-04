@@ -85,7 +85,7 @@ export const Login = ({ userInfo }) => {
   const Logout = async () => {
     try {
       console.log("Clicked");
-      navigate("/");
+      navigate("/auth");
     } catch (err) {
       console.error(err);
     }
