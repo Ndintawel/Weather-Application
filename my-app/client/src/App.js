@@ -33,8 +33,8 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/" element={<Login userInfo={userInfo} />}/>
+          <Route path="/" element={<Auth />} />
+          <Route path="/login" element={<Login userInfo={userInfo} />}/>
           <Route path="/weather" element={<WeatherApp />} />
         </Routes>
       </div>

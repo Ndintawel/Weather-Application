@@ -85,7 +85,7 @@ export const Login = ({ userInfo }) => {
   const Logout = async () => {
     try {
       console.log("Clicked");
-      navigate("/auth");
+      navigate("/");
     } catch (err) {
       console.error(err);
     }
@@ -162,7 +162,7 @@ export const Login = ({ userInfo }) => {
 
             <p className="text-sm text-white text-center">
               No account yet? {' '}
-              <NavLink to="/signup">
+              <NavLink to="/">
                 Sign up
               </NavLink>
             </p>
