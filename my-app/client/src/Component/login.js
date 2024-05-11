@@ -1,71 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate, NavLink } from 'react-router-dom'; 
 import { auth } from '../firebase';
-import { db } from '../firebase';
-import { getDocs, collection, addDoc, deleteDoc,updateDoc, doc } from "firebase/firestore";
 import "./login.css"
 
-export const Login = ({ userInfo }) => {
+const Login = ({ userInfo }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  //New user info states
-  const [newFullName,setNewFullName]=useState('');
-  const [newTitle,setNewTitle]=useState('');
-  const [newContent,setNewContent]=useState('');
-  const [newLocation,setNewLocation]=useState('');
-  //Update user's content
-
-  const [updatedContent,setUpdatedContent]= useState('');
-
   const navigate = useNavigate();
 
-  const [userInfoItem, setUserInfor] = useState([]);
-  const userCollectionRef = collection(db, "User Info");
-
  
-  const deleteUserInfo= async(id)=>{
-    const userDoc=doc(db, "User Info", id);
-    await deleteDoc(userDoc);
-  };
-
-  const updateUserInfo= async(id)=>{
-    const userDoc=doc(db, "User Info", id);
-    await updateDoc(userDoc, {Content: updatedContent});
-  };
-
-  const onSubmit=async()=>{
-    try{
-      await addDoc(userCollectionRef, {
-        FullName: newFullName, 
-        Title: newTitle, 
-        Content: newContent, 
-        Location: newLocation
-      });
-      
-    }catch(err){
-      console.error(err);
-    }
-  };
-
-
-  useEffect(() => {
-    const getUserInfo = async () => {
-      try {
-        const data = await getDocs(userCollectionRef);
-        const filteredData = data.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id
-        }));
-        setUserInfor(filteredData);
-      } catch (err) {
-        console.error(err);
-      }
-    }; 
-  
-    getUserInfo();
-  }, [onSubmit]);
-
 
   const onLogin = (e) => {
     e.preventDefault();
@@ -96,37 +40,12 @@ export const Login = ({ userInfo }) => {
       <main >
         <section>
           <div>
-            <h1>Create a post</h1>
-            <p>Share your thoughts daily...</p>
-            <div className='form'> 
-                <input placeholder="Full Name: " onChange={(e)=> setNewFullName(e.target.value)}/>
-                <input placeholder="Blog Title: " onChange={(e)=> setNewTitle(e.target.value)}/>
-                <textarea placeholder="Content: " onChange={(e)=> setNewContent(e.target.value)}/>
-                <input placeholder="Location: " onChange={(e)=> setNewLocation(e.target.value)}/>
-                <button onClick={onSubmit}>Submit Info</button>
-            </div>
-            <div>
-              {userInfoItem.map((userInfoItem) => (
-                <div key={userInfoItem.id}>
-                  <p>Full Name: {userInfoItem.FullName}</p>
-                  <p>Title: {userInfoItem.Title}</p>
-                  <p>Content: {userInfoItem.Content}</p>
-                  <p>Location: {userInfoItem.Location}</p>
-
-                  <button onClick={()=>deleteUserInfo(userInfoItem.id)}>Delete Info</button>
-
-                  <input placeholder="New Content: " onChange={(e)=>setUpdatedContent(e.target.value)}/>
-                  <button onClick={()=>updateUserInfo(userInfoItem.id)}>Update Info</button>
-
-                </div>
-              ))}
-            </div>
-            <form>
+          
               <div>
               <p>
                 
               </p>
-              <h1>Get updates with Weather Daily</h1>
+              <h1>Login to Weather Daily</h1>
                 <label htmlFor="email-address">Email address</label>
                 <input
                   id="email-address"
@@ -158,11 +77,10 @@ export const Login = ({ userInfo }) => {
                 </button>
                 <button onClick={Logout}>Logout</button>
               </div>
-            </form>
 
             <p className="text-sm text-white text-center">
               No account yet? {' '}
-              <NavLink to="/">
+              <NavLink to="/auth">
                 Sign up
               </NavLink>
             </p>

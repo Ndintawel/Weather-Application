@@ -1,58 +1,63 @@
+
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
-  h1 {
-    font-size: 50px;
-    margin-bottom: 20px;
-    font-family: sans-serif;
-    color: #d1c4ec;
-    font-weight:800;
-  }
-  
-  input {
-    width: 300px;
-    height: 20px;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    width: 170px;
-    height: 40px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: medium;
-    background-color:  #e0c5d9;
-    color: #fff;
-    outline: #aa6f73;
-    border-color:antiquewhite;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #aa6f73;
-  }
-  
-  p {
-    margin-top: 20px;
-    font-size: larger;
-  }
-  
-  NavLink {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  NavLink:hover {
-    text-decoration: underline;
-    text-transform: none;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 50px;
+  margin-bottom: 20px;
+  font-family: sans-serif;
+  color: #d1c4ec;
+  font-weight: 800;
+}
+
+input {
+  display: block;
+  width: 300px;
+  height: 20px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.6);
+}
+
+button {
+  width: 170px;
+  height: 40px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: medium;
+  color: white;
+  background-color: #1866b8;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(10, 111, 155);
+}
+
+p {
+  margin-top: 20px;
+  font-size: larger;
+}
+
+NavLink {
+  color: #007bff;
+  text-decoration: none;
+}
+
+NavLink:hover {
+  text-decoration: underline;
+  text-transform: none;
+}

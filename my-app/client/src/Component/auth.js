@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 
 
-export const Auth=()=>{
+ const Auth=()=>{
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
     const navigate=useNavigate()
@@ -34,8 +34,9 @@ export const Auth=()=>{
 
     return(
         <div>
-        <h1>Weather Daily</h1> 
+        <h1>Create Account</h1> 
             <input placeholder="Email..." onChange={(e)=>setEmail(e.target.value)}/>
+            <input placeholder="Password..." type="password" onChange={(e)=>setPassword(e.target.value)}/>
             <input placeholder="Password..." type="password" onChange={(e)=>setPassword(e.target.value)}/>
             <button onClick={()=>{SignUp()}}>Sign Up</button>
 
@@ -49,3 +50,4 @@ export const Auth=()=>{
         </div>
     );
 };
+export default Auth
